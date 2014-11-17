@@ -1,6 +1,6 @@
 'use strict';
 
-var mocha = require('../lib/mocha');
+var mocha = require('../../lib/mocha');
 
 var EventEmitter = require('events').EventEmitter;
 

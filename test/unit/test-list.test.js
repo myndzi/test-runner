@@ -2,7 +2,7 @@
 
 require('should-eventually');
 
-var TestList = require('../lib/test-list');
+var TestList = require('../../lib/test-list');
 
 describe('TestList', function () {
     describe('.filter', function () {

@@ -2,7 +2,7 @@
 
 require('should-eventually');
 
-var Runner = require('../lib/runner');
+var Runner = require('../../lib/runner');
 
 var Promise = require('bluebird');
 

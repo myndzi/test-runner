@@ -1,0 +1,4 @@
+{
+    "sourceDirs": ["lib"],
+    "testDirs": ["success", "failure"]
+}

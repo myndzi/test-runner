@@ -3,7 +3,7 @@
 var PATH = require('path');
 
 describe('istanbul', function () {
-    var istanbul = require('../lib/istanbul'),
+    var istanbul = require('../../lib/istanbul'),
         EventEmitter = require('events').EventEmitter;
     
     function noop() { }
@@ -13,8 +13,8 @@ describe('istanbul', function () {
         before(function () {
             matchFn = istanbul([
                 PATH.join(__dirname, 'fake-app'),
-                PATH.join(__dirname, '..', 'node_modules', 'istanbul', 'lib'),
-                PATH.join(__dirname, '..', 'node_modules', 'istanbul')
+                PATH.join(__dirname, '../..', 'node_modules', 'istanbul', 'lib'),
+                PATH.join(__dirname, '../..', 'node_modules', 'istanbul')
             
             ], { }, new EventEmitter()).matchFn;
         });
@@ -24,10 +24,10 @@ describe('istanbul', function () {
             matchFn(PATH.join(__dirname, 'fake-app', 'foo.js')).should.equal(true);
         });
         it('should not accept files in node_modules', function () {
-            matchFn(PATH.join(__dirname, '..', 'node_modules', 'foo.js')).should.equal(false);
+            matchFn(PATH.join(__dirname, '../..', 'node_modules', 'foo.js')).should.equal(false);
         });
         it('should accept files in sourceDirs that are in node_modules', function () {
-            matchFn(PATH.join(__dirname, '..', 'node_modules', 'istanbul', 'bar.js')).should.equal(true);
+            matchFn(PATH.join(__dirname, '../..', 'node_modules', 'istanbul', 'bar.js')).should.equal(true);
         });
         it('should accept files in subdirectories', function () {
             matchFn(PATH.join(__dirname, 'fake-app', 'foo', 'bar', 'baz.js')).should.equal(true);
