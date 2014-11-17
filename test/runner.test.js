@@ -4,6 +4,8 @@ require('should-eventually');
 
 var Runner = require('../lib/runner');
 
+var Promise = require('bluebird');
+
 function noop () { };
 
 describe('runner', function () {
@@ -241,6 +243,8 @@ describe('runner', function () {
                 runs.should.equal(1);
             });
         });
+    });
+    describe('\'done\' event', function () {
         it('should emit \'done\' when complete', function (done) {
             var foo = new Runner({
                 baseDir: __dirname + '/fake-app',
@@ -249,6 +253,30 @@ describe('runner', function () {
             });
             foo.on('done', done.bind(null, null));
             foo.run();
+        });
+        it('should provide an \'await\' callback and not conclude until awaited items are complete', function () {
+            var foo = new Runner({
+                baseDir: __dirname + '/fake-app',
+                _mocha: function () { return noop },
+                tokens: ['foo']
+            });
+            foo.on('done', function (await) {
+                await(Promise.delay(40));
+            });
+            return foo.run();
+        });
+        it('\'await\' should allow node-style async functions', function () {
+            var foo = new Runner({
+                baseDir: __dirname + '/fake-app',
+                _mocha: function () { return noop },
+                tokens: ['foo']
+            });
+            foo.on('done', function (await) {
+                await(function (cb) {
+                    setTimeout(cb, 40);
+                });
+            });
+            return foo.run();
         });
     });
     describe('coverage', function () {

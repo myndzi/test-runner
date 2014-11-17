@@ -110,6 +110,4 @@ describe('istanbul', function () {
         ee.emit('done');
         args.should.eql(['text-summary', 'cobertura']);
     });
-    
-    
 });
