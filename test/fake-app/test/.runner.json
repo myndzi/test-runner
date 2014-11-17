@@ -1,0 +1,5 @@
+{
+    "sourceDirs": ["lib"],
+    "testDirs": ["foo", "bar"],
+    "subModules": ["quux"]
+}
