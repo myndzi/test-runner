@@ -12,10 +12,11 @@ describe('mocha', function () {
         mocha({ quiet: true, streams: streams });
         Object.keys(streams).should.be.an.Array.of.length(0);
     });
-    it('should use dot reporter to the screen by default', function () {
+    it('should use local dot reporter to the screen by default', function () {
         var streams = { };
         mocha({ streams: streams });
-        streams['mocha/lib/reporters/dot'].should.equal(process.stdout);
+        var path = require('path').resolve('lib/dot-mod');
+        streams[path].should.equal(process.stdout);
     });
     it('should use mocha-unfunk-reporter if \'spec\' is truthy', function () {
         var streams = { };
