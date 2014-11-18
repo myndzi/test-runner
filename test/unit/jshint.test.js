@@ -22,11 +22,12 @@ describe('jshint', function () {
             value: new PassThrough()
         });
         
-        jshint([ ], { streams: streams });
-        streams['jshint-stylish-ex/stylish'].should.equal(process.stdout);
-        
-        Object.defineProperty(process, 'stdout', {
-            value: pso
+        return jshint([ ], { streams: streams }).then(function () {
+            streams['jshint-stylish-ex/stylish'].should.equal(process.stdout);
+            
+            Object.defineProperty(process, 'stdout', {
+                value: pso
+            });
         });
     });
     it('should log a warning if report is requested but no reportDir is specified', function () {
@@ -37,12 +38,14 @@ describe('jshint', function () {
             } }
         };
         
-        jshint([ ], { doReport: true }, mock);
-        called.should.equal(true);
+        return jshint([ ], { doReport: true, quiet: true }, mock)
+        .then(function () {
+            called.should.equal(true);
+        });
     });
     it('should write to a report file if requested', function () {
         var streams = { }, created = false, written = false;
-        jshint([
+        return jshint([
             __dirname + '/fake-app/test/foo'
         ], {
             streams: streams,
@@ -66,7 +69,7 @@ describe('jshint', function () {
     it('should end the xml file on the \'done\' event', function () {
         var streams = { }, ended = false;
         var ee = new EventEmitter();
-        jshint([
+        return jshint([
             __dirname + '/fake-app/test/foo'
         ], {
             streams: streams,
@@ -83,8 +86,9 @@ describe('jshint', function () {
                     };
                 }
             }
+        }).then(function () {
+            ee.emit('done', function (cb) { cb(); });
+            ended.should.equal(true);
         });
-        ee.emit('done', function (cb) { cb(); });
-        ended.should.equal(true);
     });
 });

@@ -46,7 +46,7 @@ describe('istanbul', function () {
             }
         };
         
-        istanbul([], { doReport: true }, ee);
+        istanbul([], { doReport: true, quiet: true }, ee);
         ee.emit('done')
     });
     
