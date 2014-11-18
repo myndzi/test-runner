@@ -15,7 +15,7 @@ describe('mocha', function () {
     it('should use local dot reporter to the screen by default', function () {
         var streams = { };
         mocha({ streams: streams });
-        var path = require('path').resolve('lib/dot-mod');
+        var path = require('path').resolve(__dirname + '/../../lib/dot-mod');
         streams[path].should.equal(process.stdout);
     });
     it('should use mocha-unfunk-reporter if \'spec\' is truthy', function () {
