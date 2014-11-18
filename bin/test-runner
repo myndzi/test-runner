@@ -2,10 +2,8 @@
 
 'use strict';
 
-//var Runner = require('../lib/runner');
+var Runner = require('../lib/runner');
 
-console.log(process.argv);
+var runner = new Runner(process.argv, process.cwd());
 
-//var runner = new Runner(process.argv, __dirname);
-
-//runner.run();
+runner.run();
