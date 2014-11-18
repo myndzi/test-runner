@@ -2,7 +2,7 @@
   "name": "test-runner",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "lib/runner.js",
   "scripts": {
     "test": "node test"
   },
