@@ -1,8 +1,12 @@
 {
-  "name": "test-runner",
-  "version": "1.0.0",
+  "name": "@eros/test-runner",
+  "version": "1.0.1",
   "description": "",
   "main": "./lib/runner.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbhmedia/test-runner"
+  },
   "scripts": {
     "test": "node test"
   },
