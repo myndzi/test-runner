@@ -190,7 +190,7 @@ describe('runner', function () {
             var foo = new Runner({
                 baseDir: __dirname + '/fake-app',
                 _mocha: function () { return noop; },
-                _perf: function (opts) {
+                _perf: function (baseDir, opts) {
                     opts.should.equal(bar);
                     ran = true;
                 },
@@ -206,7 +206,7 @@ describe('runner', function () {
             var foo = new Runner({
                 baseDir: __dirname + '/fake-app',
                 _mocha: function () { return noop; },
-                _perf: function (opts) {
+                _perf: function (baseDir, opts) {
                     opts.should.equal(bar);
                     ran = true;
                 },
