@@ -8,7 +8,8 @@
     "url": "https://github.com/bbhmedia/test-runner"
   },
   "scripts": {
-    "test": "node test"
+    "test": "node test",
+    "bamp": "bamp"
   },
   "bin": {
     "test-runner": "./bin/test-runner"
