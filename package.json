@@ -22,12 +22,13 @@
     "jshint-stylish-ex": "^0.2.0",
     "logger": "git+https://github.com/myndzi/logger",
     "minimist": "^1.1.0",
-    "mocha": "2.0.x",
+    "mocha": "^2.2.4",
     "mocha-reporter-multiplexer": "^1.0.2",
     "mocha-unfunk-reporter": "^0.4.0",
     "optimist": "^0.6.1"
   },
   "devDependencies": {
+    "bamp": "^1.0.10",
     "should": "^4.3.0",
     "should-eventually": "^0.1.2"
   }
