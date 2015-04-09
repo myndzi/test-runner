@@ -17,11 +17,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@eros/logger": "^0.1.2",
     "bluebird": "^2.3.11",
     "istanbul": "^0.3.2",
     "jshint": "^2.5.10",
     "jshint-stylish-ex": "^0.2.0",
-    "logger": "git+https://github.com/myndzi/logger",
     "minimist": "^1.1.0",
     "mocha": "^2.2.4",
     "mocha-reporter-multiplexer": "^1.0.2",
