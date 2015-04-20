@@ -1,6 +1,6 @@
 {
   "name": "@eros/test-runner",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "",
   "main": "./lib/runner.js",
   "repository": {
@@ -26,7 +26,9 @@
     "mocha": "^2.2.4",
     "mocha-reporter-multiplexer": "^1.0.2",
     "mocha-unfunk-reporter": "^0.4.0",
-    "optimist": "^0.6.1"
+    "optimist": "^0.6.1",
+    "should": "^6.0.1",
+    "should-eventually": "^0.2.0"
   },
   "devDependencies": {
     "bamp": "^1.0.10",
