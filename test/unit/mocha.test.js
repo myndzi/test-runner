@@ -2,7 +2,10 @@
 
 var mocha = require('../../lib/mocha');
 
-var EventEmitter = require('events').EventEmitter;
+var EventEmitter = require('events').EventEmitter,
+    PATH = require('path');
+
+var basedir = PATH.resolve(PATH.join(__dirname, '..', '..'));
 
 require('should-eventually');
 
@@ -50,7 +53,7 @@ describe('mocha', function () {
         });
         created.should.equal(true);
         written.should.equal(true);
-        streams['mocha/lib/reporters/xunit'].should.be.ok;
+        streams[basedir+'/lib/xunit-mod'].should.be.ok;
     });
     it('should end the xml file on the \'done\' event', function () {
         var streams = { }, ended = false;
