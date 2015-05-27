@@ -355,6 +355,29 @@ describe('runner', function () {
                 ran.should.equal(true);
             });
         });
+        it('should unhook require if mocha passes errors', function () {
+            var ran = false;
+            var foo = new Runner({
+                baseDir: __dirname + '/fake-app',
+                _mocha: function () {
+                    return function () { throw new Error('foo'); }
+                },
+                _istanbul: function (sourceDirs, opts, runner) {
+                    return {
+                        hook: noop,
+                        unhook: function () { ran = true; },
+                        writeReport: noop
+                    };
+                },
+                coverage: { },
+                doCov: true,
+                tokens: ['foo']
+            });
+            
+            return foo.run().then(function () {
+                ran.should.equal(true);
+            });
+        });
     });
     
     xdescribe('init.js', function () {
