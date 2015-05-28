@@ -6,4 +6,6 @@ var Runner = require('../lib/runner');
 
 var runner = new Runner(process.argv, process.cwd());
 
-runner.run();
+runner.run().then(function (errors) {
+    process.exit(errors ? 1 : 0);
+});

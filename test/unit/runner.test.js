@@ -358,6 +358,7 @@ describe('runner', function () {
         it('should unhook require if mocha passes errors', function () {
             var ran = false;
             var foo = new Runner({
+                env: 'testing',
                 baseDir: __dirname + '/fake-app',
                 _mocha: function () {
                     return function () { throw new Error('foo'); }
@@ -376,6 +377,8 @@ describe('runner', function () {
             
             return foo.run().then(function () {
                 ran.should.equal(true);
+            }).catch(function () {
+                // swallow the error
             });
         });
     });
