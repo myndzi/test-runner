@@ -27,9 +27,7 @@
     "mocha": "^2.2.4",
     "mocha-reporter-multiplexer": "^1.0.6",
     "mocha-unfunk-reporter": "^0.4.0",
-    "optimist": "^0.6.1",
-    "should": "^6.0.1",
-    "should-eventually": "^0.2.0"
+    "optimist": "^0.6.1"
   },
   "devDependencies": {
     "bamp": "^1.0.10",
