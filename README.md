@@ -4,7 +4,7 @@ It runs tests. And stuff.
 
 # Usage
 
-    npm install --save-dev @eros/test-runner
+    npm install --save-dev @myndzi/test-runner
 
 package.json:
 
