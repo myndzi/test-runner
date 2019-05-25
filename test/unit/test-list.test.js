@@ -1,6 +1,6 @@
 'use strict';
 
-require('should-eventually');
+require('should');
 
 var TestList = require('../../lib/test-list');
 
@@ -11,9 +11,9 @@ describe('TestList', function () {
                 testDirs: [ 'foo', 'bar' ],
                 subModules: [ 'baz' ]
             });
-            
+
             tl.filter();
-            
+
             tl.testDirs.should.eql([ 'foo', 'bar' ]);
             tl.subModules.should.eql([ 'baz' ]);
         });
@@ -22,9 +22,9 @@ describe('TestList', function () {
                 testDirs: [ 'foo', 'bar' ],
                 subModules: [ 'baz' ]
             });
-            
+
             var tokens = tl.filter(['foo']);
-            
+
             tokens.should.eql([]);
         });
         it('should not use tokens that don\'t match test dirs or submodules', function () {
@@ -32,9 +32,9 @@ describe('TestList', function () {
                 testDirs: [ 'foo', 'bar' ],
                 subModules: [ 'baz' ]
             });
-            
+
             var tokens = tl.filter(['quux']);
-            
+
             tokens.should.eql(['quux']);
         });
         it('should reduce test dirs and submodules to only those matching the tokens', function () {
@@ -42,9 +42,9 @@ describe('TestList', function () {
                 testDirs: [ 'foo', 'bar' ],
                 subModules: [ 'baz' ]
             });
-            
+
             tl.filter(['foo']);
-            
+
             tl.testDirs.should.eql(['foo']);
             tl.subModules.should.eql([ ]);
         });
@@ -53,9 +53,9 @@ describe('TestList', function () {
                 testDirs: [ 'foo', 'bar' ],
                 subModules: [ 'baz' ]
             });
-            
+
             var tokens = tl.filter(['quux']);
-            
+
             tl.testDirs.should.eql([ 'foo', 'bar' ]);
             tl.subModules.should.eql([ 'baz' ]);
         });
@@ -65,7 +65,7 @@ describe('TestList', function () {
             var tl = new TestList(__dirname, {
                 subModules: [ 'baz' ]
             });
-            
+
             tl.loadSubModules([ ], { });
             tl.subModules[0].should.be.an.instanceof(TestList);
         });
@@ -73,11 +73,11 @@ describe('TestList', function () {
             var tl = new TestList(__dirname, {
                 subModules: [ 'baz' ]
             });
-            
+
             var tokens = tl.loadSubModules(['foo'], {
                 testDirs: [ 'foo', 'bar' ]
             });
-            
+
             tokens.should.eql([ ]);
             tl.subModules[0].testDirs.should.eql(['foo']);
         });
@@ -159,17 +159,17 @@ describe('TestList', function () {
             tl.loadSubModules([ ], {
                 testDirs: ['baz', 'foo']
             });
-            
+
             var expected = { };
             function addFiles(path, file) {
                 if (!Array.isArray(file)) { file = [ file ]; }
                 var arr = expected[path] = [ ];
-                
+
                 file.forEach(function (file) {
                     arr.push(path + '/' + file);
                 });
             }
-            
+
             addFiles(__dirname + '/fake-app/node_modules/quux/test/baz', 'lar.hai.test.js');
             addFiles(__dirname + '/fake-app/node_modules/quux/test/foo', 'keke.test.js');
             addFiles(__dirname + '/fake-app/test/foo', 'keke.test.js');
@@ -187,17 +187,17 @@ describe('TestList', function () {
             tl.loadSubModules([ ], {
                 testDirs: ['baz', 'foo']
             });
-            
+
             var expected = { };
             function addFiles(path, file) {
                 if (!Array.isArray(file)) { file = [ file ]; }
                 var arr = expected[path] = [ ];
-                
+
                 file.forEach(function (file) {
                     arr.push(path + '/' + file);
                 });
             }
-            
+
             //addFiles(__dirname + '/fake-app/node_modules/quux/test/baz', 'lar.hai.test.js');
             addFiles(__dirname + '/fake-app/node_modules/quux/test/foo', 'keke.test.js');
             addFiles(__dirname + '/fake-app/test/foo', 'keke.test.js');
@@ -215,17 +215,17 @@ describe('TestList', function () {
             tl.loadSubModules([ ], {
                 testDirs: ['baz', 'foo']
             });
-            
+
             var expected = { };
             function addFiles(path, file) {
                 if (!Array.isArray(file)) { file = [ file ]; }
                 var arr = expected[path] = [ ];
-                
+
                 file.forEach(function (file) {
                     arr.push(path + '/' + file);
                 });
             }
-            
+
             addFiles(__dirname + '/fake-app/node_modules/quux/test/baz', 'lar.hai.test.js');
             //addFiles(__dirname + '/fake-app/node_modules/quux/test/foo', 'keke.test.js');
             //addFiles(__dirname + '/fake-app/test/foo', 'keke.test.js');
@@ -246,17 +246,17 @@ describe('TestList', function () {
             tl.loadSubModules([ ], {
                 testDirs: ['baz', 'foo']
             });
-            
+
             var expected = { };
             function addFiles(path, file) {
                 if (!Array.isArray(file)) { file = [ file ]; }
                 var arr = expected[path] = [ ];
-                
+
                 file.forEach(function (file) {
                     arr.push(path + '/' + file);
                 });
             }
-            
+
             addFiles(__dirname + '/fake-app/node_modules/quux/test/baz', 'lar.hai.test.js');
             addFiles(__dirname + '/fake-app/node_modules/quux/test/foo', 'keke.test.js');
             //addFiles(__dirname + '/fake-app/test/foo', 'keke.test.js');
@@ -275,17 +275,17 @@ describe('TestList', function () {
             tl.loadSubModules([ ], {
                 testDirs: ['baz', 'foo']
             });
-            
+
             var expected = { };
             function addFiles(path, file) {
                 if (!Array.isArray(file)) { file = [ file ]; }
                 var arr = expected[path] = [ ];
-                
+
                 file.forEach(function (file) {
                     arr.push(path + '/' + file);
                 });
             }
-            
+
             //addFiles(__dirname + '/fake-app/node_modules/quux/test/baz', 'lar.hai.test.js');
             //addFiles(__dirname + '/fake-app/node_modules/quux/test/foo', 'keke.test.js');
             addFiles(__dirname + '/fake-app/test/foo', 'keke.test.js');
@@ -298,17 +298,17 @@ describe('TestList', function () {
         it('should read config files', function () {
             var tl = new TestList(__dirname + '/fake-app');
             tl.loadSubModules();
-            
+
             var expected = { };
             function addFiles(path, file) {
                 if (!Array.isArray(file)) { file = [ file ]; }
                 var arr = expected[path] = [ ];
-                
+
                 file.forEach(function (file) {
                     arr.push(path + '/' + file);
                 });
             }
-            
+
             addFiles(__dirname + '/fake-app/node_modules/quux/test/baz', 'lar.hai.test.js');
             addFiles(__dirname + '/fake-app/node_modules/quux/test/foo', 'keke.test.js');
             addFiles(__dirname + '/fake-app/test/foo', 'keke.test.js');

@@ -7,13 +7,13 @@ var EventEmitter = require('events').EventEmitter,
 
 var basedir = PATH.resolve(PATH.join(__dirname, '..', '..'));
 
-require('should-eventually');
+require('should');
 
 describe('mocha', function () {
     it('should not use any reporters if \'quiet\' is truthy', function () {
         var streams = { };
         mocha({ quiet: true, streams: streams });
-        Object.keys(streams).should.be.an.Array.of.length(0);
+        Object.keys(streams).should.be.an.Array().of.length(0);
     });
     it('should use local dot reporter to the screen by default', function () {
         var streams = { };
@@ -33,7 +33,7 @@ describe('mocha', function () {
                 str.should.match(/no report dir specified/);
             } }
         };
-        
+
         mocha({ doReport: true }, mock);
         called.should.equal(true);
     });

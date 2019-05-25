@@ -7,13 +7,13 @@ var EventEmitter = require('events').EventEmitter,
 
 var Promise = require('bluebird');
 
-require('should-eventually');
+require('should');
 
 describe('jshint', function () {
     it('should not use any reporters if \'quiet\' is truthy', function () {
         var streams = { };
         jshint([ ], { quiet: true, streams: streams });
-        Object.keys(streams).should.be.an.Array.of.length(0);
+        Object.keys(streams).should.be.an.Array().of.length(0);
     });
     it('should use jshint-stylish-ex to the screen by default', function () {
         var streams = { };
@@ -21,10 +21,10 @@ describe('jshint', function () {
         Object.defineProperty(process, 'stdout', {
             value: new PassThrough()
         });
-        
+
         return jshint([ ], { streams: streams }).then(function () {
             streams['jshint-stylish-ex/stylish'].should.equal(process.stdout);
-            
+
             Object.defineProperty(process, 'stdout', {
                 value: pso
             });
@@ -37,7 +37,7 @@ describe('jshint', function () {
                 str.should.match(/no report dir specified/);
             } }
         };
-        
+
         return jshint([ ], { doReport: true, quiet: true }, mock)
         .then(function () {
             called.should.equal(true);

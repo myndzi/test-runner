@@ -1,6 +1,6 @@
 'use strict';
 
-require('should-eventually');
+require('should');
 
 var Runner = require('../../lib/runner');
 
@@ -56,10 +56,10 @@ describe('runner', function () {
                     logLevel: 'silly'
                 }
             });
-            
+
             foo.opts.perf.doReport.should.equal(true);
             foo.opts.lint.doReport.should.equal(false);
-            
+
             foo.opts.perf.logLevel.should.equal('silly');
             foo.opts.lint.logLevel.should.equal('warn');
         });
@@ -68,14 +68,14 @@ describe('runner', function () {
         it('should honor .lintOnly', function () {
             var lintRan = false,
                 getDirsRan = false;
-            
+
             var foo = new Runner({
                 baseDir: __dirname + '/fake-app',
                 lintOnly: true,
                 _lint: function () { lintRan = true; }
             });
             foo.testList.getTestDirs = function () { getDirsRan = true; }
-            
+
             return foo.run().then(function () {
                 lintRan.should.equal(true);
                 getDirsRan.should.equal(false);
@@ -160,14 +160,14 @@ describe('runner', function () {
         it('should honor .perfOnly', function () {
             var perfRan = false,
                 getDirsRan = false;
-            
+
             var foo = new Runner({
                 baseDir: __dirname + '/fake-app',
                 perfOnly: true,
                 _perf: function () { perfRan = true; }
             });
             foo.testList.getTestDirs = function () { getDirsRan = true; }
-            
+
             return foo.run().then(function () {
                 perfRan.should.equal(true);
                 getDirsRan.should.equal(false);
@@ -217,7 +217,7 @@ describe('runner', function () {
                 ran.should.equal(true);
             });
         });
-        
+
     });
     describe('mocha', function () {
         it('should execute mocha on each batch of files', function () {
@@ -295,7 +295,7 @@ describe('runner', function () {
                 tokens: ['foo']
             });
             foo.__test = function () { order.push('init'); }
-            
+
             return foo.run().then(function () {
                 order.should.eql(['hook', 'init', 'unhook']);
             });
@@ -313,7 +313,7 @@ describe('runner', function () {
                 doCov: true,
                 tokens: ['foo']
             });
-            
+
             return foo.run().then(function () {
                 ran.should.equal(true);
             });
@@ -331,7 +331,7 @@ describe('runner', function () {
                 doCov: true,
                 tokens: ['foo']
             });
-            
+
             return foo.run().then(function () {
                 ran.should.equal(true);
             });
@@ -350,7 +350,7 @@ describe('runner', function () {
                 doCov: true,
                 tokens: ['foo']
             });
-            
+
             return foo.run().then(function () {
                 ran.should.equal(true);
             });
@@ -374,7 +374,7 @@ describe('runner', function () {
                 doCov: true,
                 tokens: ['foo']
             });
-            
+
             return foo.run().then(function () {
                 ran.should.equal(true);
             }).catch(function () {
@@ -382,7 +382,7 @@ describe('runner', function () {
             });
         });
     });
-    
+
     xdescribe('init.js', function () {
         it('should load \'init.js\' if present', function (done) {
             var foo = new Runner({
