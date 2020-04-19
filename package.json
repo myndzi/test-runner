@@ -1,6 +1,6 @@
 {
   "name": "@myndzi/test-runner",
-  "version": "1.1.9",
+  "version": "1.2.0",
   "description": "Robust test runner with support for convenient filtering, linting, coverage, performance testing, and more",
   "main": "./lib/runner.js",
   "repository": {
