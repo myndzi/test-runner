@@ -30,7 +30,7 @@
     "mocha-unfunk-reporter": "^0.4.0"
   },
   "devDependencies": {
-    "bamp": "^1.0.10",
+    "bamp": "^1.1.0",
     "should": "^13.2.3"
   }
 }
