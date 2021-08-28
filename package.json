@@ -1,6 +1,6 @@
 {
   "name": "@myndzi/test-runner",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Robust test runner with support for convenient filtering, linting, coverage, performance testing, and more",
   "main": "./lib/runner.js",
   "repository": {
@@ -30,7 +30,7 @@
     "mocha-unfunk-reporter": "^0.4.0"
   },
   "devDependencies": {
-    "bamp": "^1.1.0",
+    "bamp": "^1.1.1",
     "should": "^13.2.3"
   }
 }
