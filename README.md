@@ -1,3 +1,7 @@
+# Archived
+
+Legacy / unused
+
 # Test-runner
 
 It runs tests. And stuff.
